@@ -27,6 +27,12 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}
+	
+	@RequestMapping("/register")
+	public ModelAndView register() {
+		ModelAndView mv = new ModelAndView("register");
+		return mv;
+	}
 
 	@RequestMapping("/{username}")
 	public ModelAndView showTweet(@PathVariable String username) {

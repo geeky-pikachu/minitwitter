@@ -8,12 +8,12 @@
 </head>
 <body>
 <jsp:include page="header1.jsp" />
-	<h1>Geeky Pikaju Mini Twitter</h1>
+	<h1>Geeky Pikaju Mini Twitter Clone</h1>
 
 	<p>Welcome anonymous user!
       You need to <a href="${pageContext.request.contextPath}/login/">Sign in</a>
       before you can use this application.</p>
-    <p>If you don't have an account, please <a href="${pageContext.request.contextPath}/users/register/">Sign up now!</a></p>
+    <p>If you don't have an account, please <a href="${pageContext.request.contextPath}/register/">Sign up now!</a></p>
 
 
 </div>
