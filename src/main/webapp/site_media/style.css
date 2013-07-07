@@ -10,16 +10,17 @@ body {
 
 table.microposts {
 	table-layout: fixed;
-	width: 700px;
+	width: 1200px;
 }
 
 table.microposts td {
-	text-overflow: ellipsis;
+	text-overflow:string ;
 	overflow: hidden;
 	white-space: nowrap;
 	border-top: 1px solid #ccc;
 	vertical-align: top;
 	padding-top: 10px;
+/* 	overflow: auto */
 }
 
 table.microposts td span.timestamp {
