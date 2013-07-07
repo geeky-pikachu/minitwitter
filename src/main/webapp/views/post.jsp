@@ -12,8 +12,8 @@
 	<div class="container">
 		<jsp:include page="header2.jsp" />	
 		<h1>Geeky Pikachu Twitter Clone</h1>
-		<p>Welcome xxxx! Here you can store and share bookmarks!</p>
-		<p>Hi xxxx! What is on your mind?</p>
+		<p>Welcome ${username}! Here you can store and share bookmarks!</p>
+		<p>Hi ${username}! What is on your mind?</p>
 		<form method="post">
 			<div style='display: none'>
 				<input type='hidden' name='csrfmiddlewaretoken' value='8be4ba9360e22ce22306b3719a673a9c' />

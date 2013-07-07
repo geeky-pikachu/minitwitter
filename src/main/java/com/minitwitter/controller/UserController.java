@@ -40,7 +40,7 @@ public class UserController {
 		return new ModelAndView("post", "tweets", listTweet);
 	}
 
-	@RequestMapping(value = "/{username}/post", method = RequestMethod.POST)
+	@RequestMapping(value = "/{username}", method = RequestMethod.POST)
 	public ModelAndView post(@PathVariable String username, @RequestParam String message) {
 		ModelAndView mv = new ModelAndView("post");
 		if (message != null && message != "") {
