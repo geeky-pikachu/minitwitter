@@ -10,12 +10,12 @@
 <body>
 <div class="container">
 	<div id="nav">
-		<a href="/">Home</a> |
+		<a href="/index/">Home</a> |
 		
 			<a href="/login/">Sign in</a>
 		
 	</div>
-	<h1> Pikaju Mini Twitter</h1>
+	<h1>Geeky Pikaju Mini Twitter</h1>
 	
 
 	<p>Welcome anonymous user! 
