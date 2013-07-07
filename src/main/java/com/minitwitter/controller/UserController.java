@@ -33,7 +33,7 @@ public class UserController {
 
 	@RequestMapping("/{username}")
 	public ModelAndView showTweet(@PathVariable String username) {
-		List<Map<String, Object>> listTweet = listTweet(username);
+		List<Tweet> listTweet = listTweet(username);
 		return new ModelAndView("post", "tweets", listTweet);
 	}
 
