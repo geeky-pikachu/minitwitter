@@ -5,21 +5,21 @@
 <html>
 <head>
 <title>Mini Twitter | Home</title>
-<link rel="stylesheet" href="/site_media/style.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/site_media/style.css" type="text/css"/>
 </head>
 <body>
 <div class="container">
 	<div id="nav">
 		<a href="/index/">Home</a> |
-		
+
 			<a href="/login/">Sign in</a>
-		
+
 	</div>
 	<h1>Geeky Pikaju Mini Twitter</h1>
-	
 
-	<p>Welcome anonymous user! 
-      You need to <a href="/login/">Sign in</a> 
+
+	<p>Welcome anonymous user!
+      You need to <a href="/login/">Sign in</a>
       before you can use this application.</p>
     <p>If you don't have an account, please <a href="/users/register/">Sign up now!</a></p>
 
