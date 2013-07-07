@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.minitwitter.domain.Tweet;
+import com.minitwitter.domain.User;
 import com.minitwitter.service.TweetService;
+import com.minitwitter.service.UserService;
 
 @Controller
 public class UserController {
 	@Autowired
 	TweetService tweetService;
+	@Autowired
+	UserService userService;
 
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -25,12 +29,31 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping("/register")
-	public ModelAndView register() {
-		ModelAndView mv = new ModelAndView("register");
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ModelAndView register(@RequestParam String username,
+			@RequestParam String password1, @RequestParam String password2,
+			@RequestParam String email) {
+		ModelAndView mv = new ModelAndView("/register");
+
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password1);
+		user.setConfirmPassword(password2);
+		user.setEmail(email);
+
+		User after = userService.registUser(user);
+		if (after.isNewUser()) {
+			mv = new ModelAndView("/registerSuccess");
+		}
 		return mv;
 	}
 
+	@RequestMapping("/register")
+	public ModelAndView registerForm() {
+		return new ModelAndView("register");
+	}
+
+	
 	@RequestMapping("/{username}")
 	public ModelAndView showTweet(@PathVariable String username) {
 		List<Tweet> listTweet = listTweet(username);
@@ -44,7 +67,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/{username}", method = RequestMethod.POST)
-	public ModelAndView post(@PathVariable String username, @RequestParam String message) {
+	public ModelAndView post(@PathVariable String username,
+			@RequestParam String message) {
 		ModelAndView mv = new ModelAndView("redirect:/" + username);
 		if (message != null && message != "") {
 			tweetService.tweet(username, message);

@@ -1,5 +1,9 @@
 package com.minitwitter.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -10,6 +14,7 @@ import com.minitwitter.service.UserService;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private RedisTemplate<String, String> redisTemplate;
+
 	public void setRedisTemplate(RedisTemplate<String, String> redisTemplate) {
 		this.redisTemplate = redisTemplate;
 	}
@@ -31,9 +36,18 @@ public class UserServiceImpl implements UserService {
 					user.getConfirmPassword());
 			redisHash.put(user.getUsername(), "email", user.getEmail());
 			user.setNewUser(true);
-		} else{
+		} else {
 			user.setNewUser(false);
 		}
 		return user;
+	}
+
+	@Override
+	public List<String> listAllUser(String username) {
+		HashOperations<String, String, String> redisHash = redisTemplate
+				.opsForHash();
+		List<String> hashKey = new ArrayList<String>();
+		hashKey.add("username");
+		return redisHash.multiGet(username, hashKey);
 	}
 }

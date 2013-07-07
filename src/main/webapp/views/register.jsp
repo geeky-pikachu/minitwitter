@@ -5,6 +5,20 @@
 <head>
 <title>Mini Twitter | User Registration</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/site_media/style.css" type="text/css" />
+<script type="text/javascript">
+function validateForm() { 
+	var email = document.form[0].email.value;
+	var pwd1 = document.form[0].password1.value;
+	var pwd2 = document.form[0].password2.value;
+    var re = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\
+".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA
+-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
+    if(pwd1!=pwd2){
+    	
+    }
+    return re.test(email);
+}
+</script>
 </head>
 <body>
 	<div class="container">
@@ -30,7 +44,7 @@
 				<label for="id_password2">Password (Again):</label> 
 				<input name="password2" type="password" id="id_password2" />
 			</p>
-			<input type="submit" value="post" />
+			<input type="submit" value="Regist" />
 		</form>
 
 	</div>
