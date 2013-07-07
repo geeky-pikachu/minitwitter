@@ -29,4 +29,10 @@ public class TweetServiceImpl implements TweetService {
 		this.redisTemplate = redisTemplate;
 	}
 
+	@Override
+	public boolean delete(String username, String tweet) {
+		ZSetOperations<String, String> zset = redisTemplate.opsForZSet();
+		return zset.remove(username, tweet);
+	}
+
 }

@@ -19,7 +19,7 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}
-	
+
 	@RequestMapping("/{username}")
 	public ModelAndView showTweet(@PathVariable String username) {
 		ModelAndView mv = new ModelAndView("list");
@@ -27,29 +27,29 @@ public class UserController {
 		System.out.println("show post of: " + username);
 		return mv;
 	}
-	
-	@RequestMapping("/{username}/post") 
+
+	@RequestMapping("/{username}/post")
 	public String post(@PathVariable String username) {
 		return "post";
 	}
-	
+
 	@RequestMapping(value = "/{username}/post", method = RequestMethod.POST)
-	public ModelAndView post(@PathVariable String username, @RequestParam String message) {		
+	public ModelAndView post(@PathVariable String username, @RequestParam String message) {
 		ModelAndView mv = new ModelAndView("post");
 		if (message != null && message != "") {
 			tweetService.tweet(username, message);
 			System.out.println("post as: " + username);
 			System.out.println("with message: " + message);
 		} else {
-			System.out.println("post empty message as: " + username);			
-		}		
+			System.out.println("post empty message as: " + username);
+		}
 		return mv;
 	}
-	
-	@RequestMapping(value = "/{username}/delete/{postId}", method = RequestMethod.POST)
-	public ModelAndView delete(@PathVariable String username, @PathVariable String postId) {		
-		ModelAndView mv = new ModelAndView("delete");
-		// tweetService.delete(postId);
+
+	@RequestMapping(value = "/{username}/delete/{tweet}", method = RequestMethod.POST)
+	public ModelAndView delete(@PathVariable String username, @PathVariable String tweet) {
+		ModelAndView mv = new ModelAndView("post");
+		tweetService.delete(username, tweet);
 		System.out.println("post as: " + username);
 		return mv;
 	}
