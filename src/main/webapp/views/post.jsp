@@ -27,7 +27,7 @@
 
 		<c:if test="${not empty tweets}"><div class="message green">
 			<c:forEach items="${tweets}" var="tweet">
-				<p>${tweet.usenrmae} - ${tweet.tweet}, ${tweet.time} <a href="delete/${tweet.tweet}">delete</a></p>
+				<p>${tweet.username} - ${tweet.tweet}, ${tweet.time} <a href="delete/${tweet.tweet}">delete</a></p>
        		</c:forEach>
 		</c:if>
 	</div>
