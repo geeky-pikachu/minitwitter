@@ -80,11 +80,11 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/{username}/delete/{tweet}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{username}/delete/{id}", method = RequestMethod.GET)
 	public ModelAndView delete(@PathVariable String username,
-			@PathVariable String tweet) {
-		ModelAndView mv = new ModelAndView("post");
-		tweetService.delete(username, tweet);
+			@PathVariable String id) {
+		ModelAndView mv = new ModelAndView("redirect:/" + username);
+		tweetService.delete(username, id);
 		System.out.println("post as: " + username);
 		return mv;
 	}

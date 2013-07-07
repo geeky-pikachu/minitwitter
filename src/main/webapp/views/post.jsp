@@ -26,9 +26,27 @@
 		</form>
 
 		<c:if test="${not empty tweets}"><div class="message green">
+		<table class="microposts">
 			<c:forEach items="${tweets}" var="tweet">
-				<p>${tweet.username} - ${tweet.tweet}, ${tweet.time} <a href="delete/${tweet.tweet}">delete</a></p>
-       		</c:forEach>
+		  <tr>
+	    <td colspan="50">
+	      <span class="user">
+	        <a href="${pageContext.request.contextPath}/${tweet.username}">${tweet.username}</a>
+	      </span>
+	      <span class="content"><pre>${tweet.tweet}</pre>
+			</span>
+	      <span class="timestamp">${tweet.time}
+	        </span>
+	   		 </td>
+	    
+		    <td colspan="3">	      
+		         <a href="${username}/delete/${t.index}">delete</a>	      
+		    </td>
+		
+	  </tr>
+
+		     </c:forEach>
+       		 </table>
 		</c:if>
 	</div>
 </body>
