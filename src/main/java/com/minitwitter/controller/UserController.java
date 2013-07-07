@@ -1,6 +1,14 @@
 package com.minitwitter.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,15 +30,14 @@ public class UserController {
 	
 	@RequestMapping("/{username}")
 	public ModelAndView showTweet(@PathVariable String username) {
-		ModelAndView mv = new ModelAndView("list");
-		//tweetService.showTweet(username);
-		System.out.println("show post of: " + username);
-		return mv;
+		List<Map<String, Object>> listTweet = listTweet(username);
+		return new ModelAndView("post", "tweets", listTweet);
 	}
 	
 	@RequestMapping("/{username}/post") 
-	public String post(@PathVariable String username) {
-		return "post";
+	public ModelAndView post(@PathVariable String username) {
+		List<Map<String, Object>> listTweet = listTweet(username);
+		return new ModelAndView("post", "tweets", listTweet);
 	}
 	
 	@RequestMapping(value = "/{username}/post", method = RequestMethod.POST)
@@ -52,5 +59,18 @@ public class UserController {
 		// tweetService.delete(postId);
 		System.out.println("post as: " + username);
 		return mv;
+	}
+	
+	private List<Map<String, Object>> listTweet(String username){
+		Set<TypedTuple<String>> tweets = tweetService.list(username, "all");
+		List<Map<String, Object>> listTweet = new ArrayList<Map<String,Object>>();
+		for (TypedTuple<String> tweet: tweets) {
+			Map<String, Object> mapTweet = new HashMap<String, Object>();
+			mapTweet.put("message", tweet.getValue());
+			mapTweet.put("time", new Date(tweet.getScore().longValue()));
+			listTweet.add(mapTweet);
+		}
+		
+		return listTweet;
 	}
 }
