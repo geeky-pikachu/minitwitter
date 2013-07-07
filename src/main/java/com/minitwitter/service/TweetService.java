@@ -1,15 +1,13 @@
 package com.minitwitter.service;
 
-import java.util.Set;
-
-import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
+import java.util.List;
 
 import com.minitwitter.domain.Tweet;
 
 public interface TweetService {
-	Tweet tweet(String username, String message);
+	Long tweet(String username, String message);
 
-	Set<TypedTuple<String>> list(String username, String mode);
+	List<Tweet> list(String username, String mode);
 
 	boolean delete(String username, String tweet);
 

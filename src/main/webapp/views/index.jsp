@@ -4,6 +4,8 @@
 <html>
 <head>
 <title>Mini Twitter | Home</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/STATIC_FAVICON/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath}/ANIMATED_FAVICON/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/site_media/style.css" type="text/css"/>
 </head>
 <body>

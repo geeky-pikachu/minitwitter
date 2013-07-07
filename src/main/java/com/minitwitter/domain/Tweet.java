@@ -3,14 +3,14 @@ package com.minitwitter.domain;
 import java.util.Date;
 
 public class Tweet {
-	private String username;
 	private Date time;
 	private String tweet;
+	private String username;
 
-	public Tweet(String username, String tweet, long time) {
+	public Tweet(String tweet, Long time, String username) {
 		this.time = new Date(time);
-		this.username = username;
 		this.tweet = tweet;
+		this.setUsername(username);
 	}
 
 	public Date getTime() {
@@ -36,5 +36,6 @@ public class Tweet {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 
 }
