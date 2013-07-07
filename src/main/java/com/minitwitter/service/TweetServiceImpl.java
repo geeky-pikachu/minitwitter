@@ -22,4 +22,8 @@ public class TweetServiceImpl implements TweetService {
 		return null;
 	}
 
+	public void setRedisTemplate(RedisTemplate<String, String> redisTemplate) {
+		this.redisTemplate = redisTemplate;
+	}
+
 }
