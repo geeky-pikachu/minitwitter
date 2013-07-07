@@ -45,7 +45,7 @@ public class UserController {
 
 	@RequestMapping(value = "/{username}", method = RequestMethod.POST)
 	public ModelAndView post(@PathVariable String username, @RequestParam String message) {
-		ModelAndView mv = new ModelAndView("redirect:" + username);
+		ModelAndView mv = new ModelAndView("redirect:/" + username);
 		if (message != null && message != "") {
 			tweetService.tweet(username, message);
 			System.out.println("post as: " + username);
