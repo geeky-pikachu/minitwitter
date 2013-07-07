@@ -38,7 +38,7 @@ public class TweetServiceImpl implements TweetService {
 			String[] array = item.split(":delim:"); 
 			String tweet = array[1];
 			Long time = Long.parseLong(array[0]);
-			tweetList.add(new Tweet(tweet, time));
+			tweetList.add(new Tweet(tweet, time, username));
 		}
 		return tweetList;
 	}

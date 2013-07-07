@@ -5,10 +5,12 @@ import java.util.Date;
 public class Tweet {
 	private Date time;
 	private String tweet;
+	private String username;
 
-	public Tweet(String tweet, Long time) {
+	public Tweet(String tweet, Long time, String username) {
 		this.time = new Date(time);
 		this.tweet = tweet;
+		this.username = username;
 	}
 
 	public Date getTime() {
