@@ -1,49 +1,50 @@
 package com.minitwitter.domain;
 
 public class User {
-  private String id;
-  private String firstName;
-  private String lastName;
-  private String username;
-  private String password;
+	private String username;
+	private String password;
+	private String confirmPassword;
+	private String email;
+	private boolean isNewUser = false;
 
-  public String getId() {
-    return id;
-  }
+	public boolean isNewUser() {
+		return isNewUser;
+	}
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public void setNewUser(boolean isNewUser) {
+		this.isNewUser = isNewUser;
+	}
 
-  public String getFirstName() {
-    return firstName;
-  }
+	public String getUsername() {
+		return username;
+	}
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-  public String getLastName() {
-    return lastName;
-  }
+	public String getPassword() {
+		return password;
+	}
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-  public String getUsername() {
-    return username;
-  }
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 
-  public String getPassword() {
-    return password;
-  }
+	public String getEmail() {
+		return email;
+	}
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }

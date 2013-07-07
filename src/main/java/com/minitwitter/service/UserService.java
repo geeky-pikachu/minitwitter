@@ -1,4 +1,8 @@
 package com.minitwitter.service;
 
-public class UserService {
+import com.minitwitter.domain.User;
+
+public interface UserService {
+	public boolean checkAuthen(String username, String password) ;
+	public User registUser(User user);
 }
