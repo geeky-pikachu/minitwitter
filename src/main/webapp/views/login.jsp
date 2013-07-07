@@ -7,16 +7,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/site_media/style.css" type="text/css"/>
 </head>
 <body>
-<div class="container">
-	<div id="nav">
-		<a href="${pageContext.request.contextPath}/">Home</a> |
-		
-			<a href="${pageContext.request.contextPath}/login/">Sign in</a>
-		
-	</div>
+<jsp:include page="header1.jsp" />
 	<h1>User Login</h1>
-	
-	
 	
 	<form method="post" action="."> <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='b74e3c6367d6328d9e8733a88f07c647' /></div>
 	<p><label for="id_username">Username:</label>

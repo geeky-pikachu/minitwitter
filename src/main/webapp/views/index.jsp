@@ -7,13 +7,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/site_media/style.css" type="text/css"/>
 </head>
 <body>
-<div class="container">
-	<div id="nav">
-		<a href="${pageContext.request.contextPath}/">Home</a> |
-		
-			<a href="${pageContext.request.contextPath}/login/">Sign in</a>
-		
-	</div>
+<jsp:include page="header1.jsp" />
 	<h1>Geeky Pikaju Mini Twitter</h1>
 	
 
