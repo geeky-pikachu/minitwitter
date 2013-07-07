@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.minitwitter.service.TweetService;
 import com.minitwitter.service.TweetServiceImpl;
+import com.minitwitter.service.impl.UserServiceImpl;
 
 @Configuration
 @Import(RedisConfig.class)
@@ -21,5 +21,13 @@ public class ServiceConfig {
 		tweetService.setRedisTemplate(redisTemplate);
 
 		return tweetService;
+	}
+	
+	@Bean
+	UserServiceImpl userService(){
+		UserServiceImpl userServiceImpl = new UserServiceImpl();
+		userServiceImpl.setRedisTemplate(redisTemplate);
+		
+		return userServiceImpl;
 	}
 }
