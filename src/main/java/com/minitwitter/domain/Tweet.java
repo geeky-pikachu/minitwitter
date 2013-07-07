@@ -10,7 +10,7 @@ public class Tweet {
 	public Tweet(String tweet, Long time, String username) {
 		this.time = new Date(time);
 		this.tweet = tweet;
-		this.username = username;
+		this.setUsername(username);
 	}
 
 	public Date getTime() {
@@ -27,6 +27,14 @@ public class Tweet {
 
 	public void setTweet(String tweet) {
 		this.tweet = tweet;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 
