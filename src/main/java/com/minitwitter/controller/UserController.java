@@ -27,40 +27,40 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}
-	
+
 	@RequestMapping("/{username}")
 	public ModelAndView showTweet(@PathVariable String username) {
 		List<Map<String, Object>> listTweet = listTweet(username);
 		return new ModelAndView("post", "tweets", listTweet);
 	}
-	
-	@RequestMapping("/{username}/post") 
+
+	@RequestMapping("/{username}/post")
 	public ModelAndView post(@PathVariable String username) {
 		List<Map<String, Object>> listTweet = listTweet(username);
 		return new ModelAndView("post", "tweets", listTweet);
 	}
-	
+
 	@RequestMapping(value = "/{username}/post", method = RequestMethod.POST)
-	public ModelAndView post(@PathVariable String username, @RequestParam String message) {		
+	public ModelAndView post(@PathVariable String username, @RequestParam String message) {
 		ModelAndView mv = new ModelAndView("post");
 		if (message != null && message != "") {
 			tweetService.tweet(username, message);
 			System.out.println("post as: " + username);
 			System.out.println("with message: " + message);
 		} else {
-			System.out.println("post empty message as: " + username);			
-		}		
+			System.out.println("post empty message as: " + username);
+		}
 		return mv;
 	}
-	
-	@RequestMapping(value = "/{username}/delete/{postId}", method = RequestMethod.POST)
-	public ModelAndView delete(@PathVariable String username, @PathVariable String postId) {		
-		ModelAndView mv = new ModelAndView("delete");
-		// tweetService.delete(postId);
+
+	@RequestMapping(value = "/{username}/delete/{tweet}", method = RequestMethod.POST)
+	public ModelAndView delete(@PathVariable String username, @PathVariable String tweet) {
+		ModelAndView mv = new ModelAndView("post");
+		tweetService.delete(username, tweet);
 		System.out.println("post as: " + username);
 		return mv;
 	}
-	
+
 	private List<Map<String, Object>> listTweet(String username){
 		Set<TypedTuple<String>> tweets = tweetService.list(username, "all");
 		List<Map<String, Object>> listTweet = new ArrayList<Map<String,Object>>();
@@ -70,7 +70,7 @@ public class UserController {
 			mapTweet.put("time", new Date(tweet.getScore().longValue()));
 			listTweet.add(mapTweet);
 		}
-		
+
 		return listTweet;
 	}
 }

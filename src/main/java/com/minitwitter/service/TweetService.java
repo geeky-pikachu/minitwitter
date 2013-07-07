@@ -8,5 +8,9 @@ import com.minitwitter.domain.Tweet;
 
 public interface TweetService {
 	Tweet tweet(String username, String message);
+
 	Set<TypedTuple<String>> list(String username, String mode);
+
+	boolean delete(String username, String tweet);
+
 }

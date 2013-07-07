@@ -32,11 +32,19 @@ public class TweetServiceImpl implements TweetService {
 		this.redisTemplate = redisTemplate;
 	}
 
+
 	public Set<TypedTuple<String>> list(String username, String mode) {
 		ZSetOperations<String, String> zset = redisTemplate.opsForZSet();
 		Set<TypedTuple<String>> tweets = zset.rangeWithScores(username, 0, -1);
-		
+
 		return tweets;
+	}
+
+	@Override
+	public boolean delete(String username, String tweet) {
+		ZSetOperations<String, String> zset = redisTemplate.opsForZSet();
+		return zset.remove(username, tweet);
+
 	}
 
 }
