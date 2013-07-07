@@ -15,6 +15,9 @@ public class TweetServiceImpl implements TweetService {
 		ZSetOperations<String, String> zset = redisTemplate.opsForZSet();
 		long time = System.currentTimeMillis();
 		Boolean canTweet = zset.add(username , message, time);
+		System.out.println("SERVICE: " + username);
+		System.out.println("SERVICE: " + message);
+		System.out.println("SERVICE: " + time);
 		if (canTweet) {
 			Tweet tweet = new Tweet(username, message, time);
 			return tweet;
