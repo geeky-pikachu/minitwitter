@@ -28,6 +28,11 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping("/{username}/post") 
+	public String post(@PathVariable String username) {
+		return "post";
+	}
+	
 	@RequestMapping(value = "/{username}/post", method = RequestMethod.POST)
 	public ModelAndView post(@PathVariable String username, @RequestParam String message) {		
 		ModelAndView mv = new ModelAndView("post");
