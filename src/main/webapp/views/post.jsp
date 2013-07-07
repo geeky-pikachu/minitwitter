@@ -26,6 +26,7 @@
 		</form>
 
 		<c:if test="${not empty tweets}"><div class="message green">
+<<<<<<< HEAD
 		<table class="microposts">
 			<c:forEach items="${tweets}" var="tweet">
 		  <tr>
@@ -40,13 +41,12 @@
 	   		 </td>
 	    
 		    <td colspan="3">	      
-		         <a href="delete/${tweet.tweet}">delete</a>	      
+		         <a href="${username}/delete/${t.index}">delete</a>	      
 		    </td>
 		
 	  </tr>
 
-			
-       		</c:forEach>
+		     </c:forEach>
        		 </table>
 		</c:if>
 	</div>

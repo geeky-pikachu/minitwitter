@@ -9,6 +9,6 @@ public interface TweetService {
 
 	List<Tweet> list(String username, String mode);
 
-	boolean delete(String username, String tweet);
+	Long delete(String username, String tweet);
 
 }
