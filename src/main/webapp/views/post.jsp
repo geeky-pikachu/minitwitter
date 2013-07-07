@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container">
-		<jsp:include page="header2.jsp" />	
+		<jsp:include page="header2.jsp" />
 		<h1>Geeky Pikachu Twitter Clone</h1>
 		<p>Welcome ${username}! Here you can store and share bookmarks!</p>
 		<p>Hi ${username}! What is on your mind?</p>
@@ -27,7 +27,7 @@
 
 		<c:if test="${not empty tweets}"><div class="message green">
 			<c:forEach items="${tweets}" var="tweet">
-				<p>${tweet.message}, ${tweet.time}</p>
+				<p>${tweet.message}, ${tweet.time} <a href="delete/${tweet.message}">delete</a></p>
        		</c:forEach>
 		</c:if>
 	</div>

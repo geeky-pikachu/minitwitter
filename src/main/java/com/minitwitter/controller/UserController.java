@@ -53,7 +53,7 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/{username}/delete/{tweet}", method = RequestMethod.POST)
+	@RequestMapping(value = "/{username}/delete/{tweet}", method = RequestMethod.GET)
 	public ModelAndView delete(@PathVariable String username, @PathVariable String tweet) {
 		ModelAndView mv = new ModelAndView("post");
 		tweetService.delete(username, tweet);
