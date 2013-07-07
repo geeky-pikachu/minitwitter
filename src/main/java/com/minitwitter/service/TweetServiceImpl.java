@@ -1,11 +1,12 @@
 package com.minitwitter.service;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
-import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 
 import com.minitwitter.domain.Tweet;
 
@@ -14,18 +15,13 @@ public class TweetServiceImpl implements TweetService {
 	private RedisTemplate<String, String> redisTemplate;
 
 	@Override
-	public Tweet tweet(String username, String message) {
-		ZSetOperations<String, String> zset = redisTemplate.opsForZSet();
+	public Long tweet(String username, String message) {
+		String key = username + ":tweets";
 		long time = System.currentTimeMillis();
-		Boolean canTweet = zset.add(username , message, time);
-		System.out.println("SERVICE: " + username);
-		System.out.println("SERVICE: " + message);
-		System.out.println("SERVICE: " + time);
-		if (canTweet) {
-			Tweet tweet = new Tweet(username, message, time);
-			return tweet;
-		}
-		return null;
+		String data = time + ":delim:" + message;
+		
+		ListOperations<String, String> list = redisTemplate.opsForList();
+		return list.leftPush(key, data);
 	}
 
 	public void setRedisTemplate(RedisTemplate<String, String> redisTemplate) {
@@ -33,11 +29,18 @@ public class TweetServiceImpl implements TweetService {
 	}
 
 
-	public Set<TypedTuple<String>> list(String username, String mode) {
-		ZSetOperations<String, String> zset = redisTemplate.opsForZSet();
-		Set<TypedTuple<String>> tweets = zset.rangeWithScores(username, 0, -1);
-
-		return tweets;
+	public List<Tweet> list(String username, String mode) {
+		ListOperations<String, String> list = redisTemplate.opsForList();
+		String key = username + ":tweets";
+		List<String> tweets = list.range(key, 0, -1);
+		List<Tweet> tweetList = new ArrayList<Tweet>();
+		for(String item: tweets){
+			String[] array = item.split(":delim:"); 
+			String tweet = array[1];
+			Long time = Long.parseLong(array[0]);
+			tweetList.add(new Tweet(tweet, time));
+		}
+		return tweetList;
 	}
 
 	@Override
