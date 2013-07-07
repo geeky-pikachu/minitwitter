@@ -6,7 +6,10 @@
 </head>
 <body>
 <h1>
-  Mini Twitter
+  Pikaju Mini Twitter
 </h1>
+<pre>Welcome {username} user! You need to Sign in before you can use this application.
+
+If you don't have an account, <a href="/users/register/">please Sign up now!</a></pre>
 </body>
 </html>
