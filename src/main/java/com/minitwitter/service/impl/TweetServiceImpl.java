@@ -1,4 +1,4 @@
-package com.minitwitter.service;
+package com.minitwitter.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 
 import com.minitwitter.domain.Tweet;
+import com.minitwitter.service.TweetService;
 
 public class TweetServiceImpl implements TweetService {
 	@Autowired
