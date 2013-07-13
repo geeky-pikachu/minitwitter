@@ -7,16 +7,20 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/site_media/style.css" type="text/css" />
 <script type="text/javascript">
 function validateForm() { 
-	var email = document.form[0].email.value;
-	var pwd1 = document.form[0].password1.value;
-	var pwd2 = document.form[0].password2.value;
-    var re = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\
-".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA
--Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
+	var email = document.forms[0].email.value;
+	var pwd1 = document.forms[0].password1.value;
+	var pwd2 = document.forms[0].password2.value;
+	var re = /\S+@\S+\.\S+/;
     if(pwd1!=pwd2){
-    	
+    	alert("password not match");
+    	return false;
     }
-    return re.test(email);
+    if(!re.test(email)){
+    	alert("email not valid");
+    	return false;
+    }
+    document.forms[0].submit();
+    return true;
 }
 </script>
 </head>
@@ -44,7 +48,11 @@ function validateForm() {
 				<label for="id_password2">Password (Again):</label> 
 				<input name="password2" type="password" id="id_password2"/>
 			</p>
+
 			<input type="submit" value="Register" />
+
+			<input type="button" value="Regist" onclick="validateForm()"/>
+
 		</form>
 
 	</div>

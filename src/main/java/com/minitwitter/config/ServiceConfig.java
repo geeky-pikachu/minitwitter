@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.minitwitter.service.TweetServiceImpl;
+import com.minitwitter.service.impl.TweetServiceImpl;
 import com.minitwitter.service.impl.UserServiceImpl;
 
 @Configuration
