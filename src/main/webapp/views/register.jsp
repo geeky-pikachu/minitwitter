@@ -42,9 +42,9 @@ function validateForm() {
 			</p>
 			<p>
 				<label for="id_password2">Password (Again):</label> 
-				<input name="password2" type="password" id="id_password2" />
+				<input name="password2" type="password" id="id_password2"/>
 			</p>
-			<input type="submit" value="Regist" />
+			<input type="submit" value="Register" />
 		</form>
 
 	</div>

@@ -2,17 +2,13 @@ package com.minitwitter.domain;
 
 public class User {
 	private String username;
-	private String password;
-	private String confirmPassword;
+	private String password1;
+	private String password2;
 	private String email;
 	private boolean isNewUser = false;
 
 	public boolean isNewUser() {
 		return isNewUser;
-	}
-
-	public void setNewUser(boolean isNewUser) {
-		this.isNewUser = isNewUser;
 	}
 
 	public String getUsername() {
@@ -23,20 +19,20 @@ public class User {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPassword1() {
+		return password1;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword1(String password1) {
+		this.password1 = password1;
 	}
 
-	public String getConfirmPassword() {
-		return confirmPassword;
+	public String getPassword2() {
+		return password2;
 	}
 
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
+	public void setPassword2(String password2) {
+		this.password2 = password2;
 	}
 
 	public String getEmail() {
@@ -47,4 +43,8 @@ public class User {
 		this.email = email;
 	}
 
+	public void setNewUser(boolean isNewUser) {
+		this.isNewUser = isNewUser;
+	}
+	
 }

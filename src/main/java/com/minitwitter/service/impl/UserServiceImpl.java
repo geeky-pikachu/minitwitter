@@ -25,19 +25,35 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
+//	@Override
+//	public User registUser(User user) {
+//		HashOperations<String, String, String> redisHash = redisTemplate
+//				.opsForHash();
+//		if (redisHash.get(user.getUsername(), "username") == null) {
+//			redisHash.put(user.getUsername(), "username", user.getUsername());
+//			redisHash.put(user.getUsername(), "password", user.getPassword());
+//			redisHash.put(user.getUsername(), "confirm",
+//					user.getConfirmPassword());
+//			redisHash.put(user.getUsername(), "email", user.getEmail());
+//			user.setNewUser(true);
+//		} else {
+//			user.setNewUser(false);
+//		}
+//		return user;
+//	}
+	
 	@Override
-	public User registUser(User user) {
+	public User userRegister(User user) {
 		HashOperations<String, String, String> redisHash = redisTemplate
 				.opsForHash();
 		if (redisHash.get(user.getUsername(), "username") == null) {
-			redisHash.put(user.getUsername(), "username", user.getUsername());
-			redisHash.put(user.getUsername(), "password", user.getPassword());
-			redisHash.put(user.getUsername(), "confirm",
-					user.getConfirmPassword());
-			redisHash.put(user.getUsername(), "email", user.getEmail());
-			user.setNewUser(true);
-		} else {
-			user.setNewUser(false);
+				redisHash.put(user.getUsername(), "username", user.getUsername());
+				redisHash.put(user.getUsername(), "password1", user.getPassword1());
+				redisHash.put(user.getUsername(), "password2", user.getPassword2());
+				redisHash.put(user.getUsername(), "email", user.getEmail());
+				user.setNewUser(true);
+			} else {
+				user.setNewUser(false);
 		}
 		return user;
 	}

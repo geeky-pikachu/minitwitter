@@ -18,13 +18,13 @@ public class TestUser {
 		
 		User user = new User();
 		user.setUsername("user01");
-		user.setPassword("12345");
-		user.setConfirmPassword("12345");
+		user.setPassword1("12345");
+		user.setPassword2("12345");
 		user.setEmail("user01@mail.com");
 		System.out.println(user.isNewUser());
 		
 		UserServiceImpl userService = ctx.getBean(UserServiceImpl.class);
-		User after = userService.registUser(user);
+		User afterRegister = userService.userRegister(user);
 		List<String> list = userService.listAllUser("user02");
 		System.out.println(list.get(0));
 	}
